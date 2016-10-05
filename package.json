@@ -4,9 +4,7 @@
   "description": "A bundle of data collections in Typescript",
   "main": "dist/TypeData.js",
   "scripts": {
-    "preinstall": "npm install autodts",
-    "postinstall": "autodts link",
-    "prepublish": "tsc && autodts generate",
+    "prepublish": "tsc && dts-generator --name typedata --project . --out index.d.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,11 +22,10 @@
   "homepage": "https://github.com/auromota/typedata#readme",
   "dependencies": {
     "@types/lodash": "^4.14.36",
-    "autodts": "0.0.6",
-    "lodash": "^4.16.3"
+    "dts-generator": "^1.7.0",
+    "lodash": "^4.0.0"
   },
   "devDependencies": {
-    "@lib/autodts-generator": "0.0.2",
     "typescript": "^2.0.3"
   }
 }
