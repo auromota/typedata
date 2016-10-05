@@ -5,8 +5,8 @@
   "main": "dist/TypeData.js",
   "scripts": {
     "prepublish": "tsc && dts-generator --name typedata --project . --out src/index.d.ts",
-    "test": "mocha --opts mocha.opts",
-    "test:auto": "mocha --opts mocha.opts --watch"
+    "test": "mocha --compilers ts:ts-node/register --opts mocha.opts",
+    "test:auto": "mocha --compilers ts:ts-node/register --opts mocha.opts --watch"
   },
   "repository": {
     "type": "git",
