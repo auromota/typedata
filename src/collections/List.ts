@@ -1,4 +1,7 @@
-export class List<T> {
+import { ListableElement } from './ListableElement';
+import * as _ from 'lodash';
+
+export class List<T extends ListableElement<T>> {
 
     private _array: T[];
 
@@ -7,6 +10,15 @@ export class List<T> {
      */
     constructor(...elements: T[]) {
         this._array = elements;
+        let length = this.length;
+        for (let i = 1; i < length; i++) {
+            this.get(i - 1).next = this.get(i);
+            this.get(i).previous = this.get(i - 1);
+        }
+    }
+
+    get(index: number): T {
+        return this._array[index];
     }
 
     /**
@@ -26,17 +38,25 @@ export class List<T> {
     }
 
     /**
-     * Returns all the elements of the list.
+     * @return Returns all the elements of the list.
      */
     get elements(): T[] {
         return this._array;
     }
 
     /**
-     * Returns the length of the list.
+     * @return Returns the length of the list.
      */
     get length(): number {
         return this._array.length;
+    }
+
+    get first(): T {
+        return _.head(this._array);
+    }
+
+    get last(): T {
+        return _.last(this._array);
     }
 
 }
