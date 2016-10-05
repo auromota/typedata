@@ -5,4 +5,12 @@ export abstract class ListableElement<T> {
 
     constructor() { }
 
+    get hasPrevious(): boolean {
+        return this.previous !== undefined;
+    }
+
+    get hasNext(): boolean {
+        return this.next !== undefined;
+    }
+
 }

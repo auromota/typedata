@@ -68,7 +68,7 @@ describe('List', () => {
         expect(list.get(0)).eq(elem1);
     });
 
-    it('elements should have next and previous properties', () => {
+    it('should have next and previous properties', () => {
         let values = [new Listable(1), new Listable(2), new Listable(3)];
         let list = new List<Listable<number>>(...values);
         expect(list.get(0).previous).eq(undefined);
@@ -77,6 +77,29 @@ describe('List', () => {
         expect(list.get(1).next).eq(list.get(2));
         expect(list.get(2).previous).eq(list.get(1));
         expect(list.get(2).next).eq(undefined);
+    });
+
+    it('should return if has next or previous elements', () => {
+        let values = [new Listable(1), new Listable(2), new Listable(3)];
+        let list = new List<Listable<number>>(...values);
+        expect(list.get(0).hasPrevious).eq(false);
+        expect(list.get(0).hasNext).eq(true);
+        expect(list.get(1).hasPrevious).eq(true);
+        expect(list.get(1).hasNext).eq(true);
+        expect(list.get(2).hasPrevious).eq(true);
+        expect(list.get(2).hasNext).eq(false);
+    });
+
+    it('should iterate over the elements', () => {
+        let values = [new Listable(1), new Listable(2), new Listable(3)];
+        let list = new List<Listable<number>>(...values);
+        let elem = list.first;
+        let value = 1;
+        while (elem.hasNext) {
+            expect(elem.value).eq(value);
+            elem = elem.next;
+            value++;
+        }
     });
 
 });
