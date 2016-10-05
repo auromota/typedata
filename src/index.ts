@@ -1,1 +1,1 @@
-export { ArrayList } from './ArrayList';
+export { ArrayList } from './collections/ArrayList';
