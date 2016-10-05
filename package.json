@@ -1,0 +1,34 @@
+{
+  "name": "typedata",
+  "version": "0.0.1",
+  "description": "A bundle of data collections in Typescript",
+  "main": "dist/TypeData.js",
+  "scripts": {
+    "preinstall": "npm install autodts",
+    "postinstall": "autodts link",
+    "prepublish": "tsc && autodts generate",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auromota/typedata.git"
+  },
+  "author": "Auro Mota",
+  "license": "MIT",
+  "typescript": {
+    "definition": "index.d.ts"
+  },
+  "bugs": {
+    "url": "https://github.com/auromota/typedata/issues"
+  },
+  "homepage": "https://github.com/auromota/typedata#readme",
+  "dependencies": {
+    "@types/lodash": "^4.14.36",
+    "autodts": "0.0.6",
+    "lodash": "^4.16.3"
+  },
+  "devDependencies": {
+    "@lib/autodts-generator": "0.0.2",
+    "typescript": "^2.0.3"
+  }
+}
