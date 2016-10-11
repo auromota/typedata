@@ -27,6 +27,16 @@
     "dts-generator": "^1.7.0",
     "lodash": "^4.0.0"
   },
+  "keywords": [
+    "data",
+    "structures",
+    "typescript",
+    "generics",
+    "list",
+    "iterable",
+    "linked",
+    "collections"
+  ],
   "devDependencies": {
     "@types/chai": "^3.4.34",
     "chai": "^3.5.0",
