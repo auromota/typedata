@@ -1,1 +1,1 @@
-export { List, Iterator } from './src/collections/LinkedList';
+export { List, Iterator } from './src/collections/List';
