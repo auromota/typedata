@@ -13,17 +13,34 @@ describe('List', () => {
     });
 
     it('should push an element in the front of the list', () => {
-        let values = [new Listable(10), new Listable(20), new Listable(30)];
-        let list = new List<Listable<number>>(...values);
+        let a = new Listable(10);
+        let b = new Listable(20);
+        let c = new Listable(30);
+        let list = new List<Listable<number>>(a, b, c);
         list.pushFront(new Listable(40));
-        expect(list.elements).deep.eq([new Listable(40), ...values]);
+        expect(list.elements).deep.eq(buildArray());
+
+        function buildArray() {
+            let arrayA = new Listable(40);
+            let arrayB = new Listable(10);
+            let arrayC = new Listable(20);
+            let arrayD = new Listable(30);
+            arrayA.next = arrayB;
+            arrayB.next = arrayC;
+            arrayC.next = arrayD;
+            return [arrayA, arrayB, arrayC, arrayD];
+        }
     });
 
     it('should push an element in the back of the list', () => {
-        let values = [new Listable(10), new Listable(20), new Listable(30)];
-        let list = new List<Listable<number>>(...values);
+        let a = new Listable(10);
+        let b = new Listable(20);
+        let c = new Listable(30);
+        a.next = b;
+        b.next = c;
+        let list = new List<Listable<number>>(a, b, c);
         list.pushBack(new Listable(40));
-        expect(list.elements).deep.eq([...values, new Listable(40)]);
+        expect(list.elements).deep.eq([a, b, c, new Listable(40)]);
     });
 
     it('should return the length of the list', () => {
@@ -69,24 +86,20 @@ describe('List', () => {
     });
 
     it('should have next and previous properties', () => {
-        let values = [new Listable(1), new Listable(2), new Listable(3)];
-        let list = new List<Listable<number>>(...values);
-        expect(list.get(0).previous).eq(undefined);
+        let a = new Listable(1);
+        let b = new Listable(2);
+        let c = new Listable(3);
+        let list = new List<Listable<number>>(a, b, c);
         expect(list.get(0).next).eq(list.get(1));
-        expect(list.get(1).previous).eq(list.get(0));
         expect(list.get(1).next).eq(list.get(2));
-        expect(list.get(2).previous).eq(list.get(1));
         expect(list.get(2).next).eq(undefined);
     });
 
     it('should return if has next or previous elements', () => {
         let values = [new Listable(1), new Listable(2), new Listable(3)];
         let list = new List<Listable<number>>(...values);
-        expect(list.get(0).hasPrevious).eq(false);
         expect(list.get(0).hasNext).eq(true);
-        expect(list.get(1).hasPrevious).eq(true);
         expect(list.get(1).hasNext).eq(true);
-        expect(list.get(2).hasPrevious).eq(true);
         expect(list.get(2).hasNext).eq(false);
     });
 

@@ -2,14 +2,9 @@ import * as _ from 'lodash';
 
 export abstract class ListableElement<T> {
 
-    public previous: T;
     public next: T;
 
     constructor() { }
-
-    get hasPrevious(): boolean {
-        return this.previous !== undefined;
-    }
 
     get hasNext(): boolean {
         return this.next !== undefined;
@@ -29,7 +24,6 @@ export class List<T extends ListableElement<T>> {
         let length = this.length;
         for (let i = 1; i < length; i++) {
             this.get(i - 1).next = this.get(i);
-            this.get(i).previous = this.get(i - 1);
         }
     }
 
@@ -41,6 +35,9 @@ export class List<T extends ListableElement<T>> {
      * Insert an element in the first position of the list.
      */
     pushFront(element: T): List<T> {
+        if (this._array[0]) {
+            element.next = this._array[0];
+        }
         this._array.splice(0, 0, element);
         return this;
     }
@@ -49,6 +46,9 @@ export class List<T extends ListableElement<T>> {
      * Inserts an element in the last position of the list.
      */
     pushBack(element: T): List<T> {
+        if (this.last) {
+            this.last.next = element;
+        }
         this._array.push(element);
         return this;
     }

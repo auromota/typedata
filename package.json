@@ -4,7 +4,7 @@
   "description": "A bundle of data collections in Typescript [under development]",
   "main": "dist/TypeData.js",
   "scripts": {
-    "prepublish": "tsc && dts-generator --name typedata --project . --out src/index.d.ts",
+    "prepublish": "tsc && dts-generator --name typedata --project . --out index.d.ts",
     "test": "mocha --compilers ts:ts-node/register --opts mocha.opts",
     "test:auto": "mocha --compilers ts:ts-node/register --opts mocha.opts --watch"
   },
