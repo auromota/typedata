@@ -1,4 +1,4 @@
-import { ListableElement } from '../collections/ListableElement';
+import { ListableElement } from '../collections/LinkedList';
 
 export class Listable<T> extends ListableElement<Listable<T>> {
 

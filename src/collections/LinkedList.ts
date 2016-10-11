@@ -1,5 +1,21 @@
-import { ListableElement } from './ListableElement';
 import * as _ from 'lodash';
+
+export abstract class ListableElement<T> {
+
+    public previous: T;
+    public next: T;
+
+    constructor() { }
+
+    get hasPrevious(): boolean {
+        return this.previous !== undefined;
+    }
+
+    get hasNext(): boolean {
+        return this.next !== undefined;
+    }
+
+}
 
 export class List<T extends ListableElement<T>> {
 

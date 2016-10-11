@@ -1,4 +1,2 @@
-export { ArrayList } from './collections/ArrayList';
-export { List } from './collections/List';
-export { ListableElement } from './collections/ListableElement';
+export { List, ListableElement } from './collections/LinkedList';
 export { Listable } from './types/Listable';
