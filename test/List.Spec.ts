@@ -1,8 +1,8 @@
 import { } from 'mocha';
 import { expect } from 'chai';
-import { List } from '../src/index';
-import { Listable } from '../src/index';
-import { ListableElement } from '../src/index';
+import { List } from '../index';
+import { Listable } from '../index';
+import { ListableElement } from '../index';
 
 describe('List', () => {
 
