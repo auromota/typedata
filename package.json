@@ -2,9 +2,9 @@
   "name": "typedata",
   "version": "0.0.8-3",
   "description": "A bundle of data collections in TypeScript",
-  "main": "dist/TypeData.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "prepublish": "tsc && dts-generator --name typedata --project . --out index.d.ts",
+    "prepublish": "tsc && dts-generator --name typedata --project . --out dist/index.d.ts",
     "test": "mocha --compilers ts:ts-node/register --opts mocha.opts",
     "test:auto": "mocha --compilers ts:ts-node/register --opts mocha.opts --watch"
   },
@@ -15,7 +15,7 @@
   "author": "Auro Mota",
   "license": "MIT",
   "typescript": {
-    "definition": "index.d.ts"
+    "definition": "./dist/index.d.ts"
   },
   "bugs": {
     "url": "https://github.com/auromota/typedata/issues"
