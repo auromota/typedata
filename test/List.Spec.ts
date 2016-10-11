@@ -149,4 +149,27 @@ describe('List', () => {
         expect(list.elements).deep.eq([]);
     });
 
+    it('should sum the list using for each', () => {
+        let list = new List<number>(1, 2, 3, 4);
+        let total = 0;
+        list.forEach(value => total += value);
+        expect(total).eq(10);
+    });
+
+    it('should map a new list with doubled values', () => {
+        let list = new List<number>(1, 2, 3, 4);
+        let newList = list.map(value => value * 2);
+        expect(newList.elements).deep.eq([2, 4, 6, 8]);
+    });
+
+    it('should find index for element', () => {
+        let list = new List<string>('Jon', 'Mary', 'Kane');
+        let indexMary = list.findIndex(name => name === 'Mary');
+        expect(indexMary).eq(1);
+        let indexKane = list.findIndex(name => name === 'Kane');
+        expect(indexKane).eq(2);
+        let invalidIndex = list.findIndex(name => name === 'Paul');
+        expect(invalidIndex).eq(-1);
+    });
+
 });

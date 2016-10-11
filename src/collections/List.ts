@@ -1,4 +1,4 @@
-import { tail, head, last } from 'lodash';
+import { tail, head, last, findIndex } from 'lodash';
 
 export class Iterator<T> {
 
@@ -88,6 +88,28 @@ export class List<T> {
      */
     constructor(...elements: T[]) {
         this._array = elements;
+    }
+
+    /**
+     * Executes a function in every element of the list.
+     */
+    forEach(callback: (value: T, index: number, array: T[]) => void): void {
+        this._array.forEach(callback);
+    }
+
+    /**
+     * Gets the index of the first element in which the callback returns true.
+     * If no element returns true, it returns -1.
+     */
+    findIndex(callback: (value: T) => boolean): number {
+        return findIndex(this._array, callback);
+    }
+
+    /**
+     * Executes a function in every element of the list and returns and a new list with the results.
+     */
+    map(callback: (value: T, index: number, array: T[]) => T): List<T> {
+        return new List<T>(...this._array.map(callback));
     }
 
     /**
