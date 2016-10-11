@@ -127,6 +127,19 @@ export class List<T> {
     }
 
     /**
+     * Updates the value in a given index.
+     * 
+     * @return Returns true if index was valid and element updated. Otherwise, it returns false.
+     */
+    set(element: T, index: number): boolean {
+        if (index >= 0 && index < this.length) {
+            this._array[index] = element;
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Gets the element as in a circular list. Index can be negative or higher than length.
      * For example, if index -1 is passed, then it returns the last element.
      */

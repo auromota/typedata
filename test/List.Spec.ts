@@ -220,4 +220,11 @@ describe('List', () => {
         expect(list.getCircular(7)).eq(4);
     });
 
+    it('should set new values in the list', () => {
+        let list = new List<number>(1, 2, 3, 4);
+        list.set(10, 1);
+        expect(list.elements).deep.eq([1, 10, 3, 4]);
+        expect(list.set(1, 10)).eq(false);
+    });
+
 });
