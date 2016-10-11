@@ -3,7 +3,7 @@ TypeData is a collection of common data structures developed in TypeScript.
 It is still under development.
 
 ## Structures available
-- Linked list (under development)
+- List
 
 ## How to use it
 ```bash
