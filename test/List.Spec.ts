@@ -119,4 +119,34 @@ describe('List', () => {
         expect(it.value).eq(4);
     });
 
+    it('should remove element at a given position', () => {
+        let list = new List<number>(1, 2, 3, 4, 5, 6);
+        list.removeAt(-1);
+        expect(list.elements).deep.eq([2, 3, 4, 5, 6]);
+        list.removeAt(10);
+        expect(list.elements).deep.eq([2, 3, 4, 5]);
+        list.removeAt(2);
+        expect(list.elements).deep.eq([2, 3, 5]);
+    });
+
+    it('should pop elements', () => {
+        let list = new List<number>(1, 2, 3, 4, 5, 6);
+        list.popBack();
+        expect(list.elements).deep.eq([1, 2, 3, 4, 5]);
+        list.popFront();
+        expect(list.elements).deep.eq([2, 3, 4, 5]);
+        list.popBack();
+        expect(list.elements).deep.eq([2, 3, 4]);
+        list.popFront();
+        expect(list.elements).deep.eq([3, 4]);
+        list.popFront();
+        expect(list.elements).deep.eq([4]);
+        list.popBack();
+        expect(list.elements).deep.eq([]);
+        list.popFront();
+        expect(list.elements).deep.eq([]);
+        list.popBack();
+        expect(list.elements).deep.eq([]);
+    });
+
 });

@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { tail, head, last } from 'lodash';
 
 export class Iterator<T> {
 
@@ -119,10 +119,24 @@ export class List<T> {
         return this;
     }
 
+    popFront(): List<T> {
+        this._array = tail(this._array);
+        return this;
+    }
+
+    popBack(): List<T> {
+        if (this._array.length > 0) {
+            this._array.length--;
+        }
+        return this;
+    }
+
     /**
      * Inserts an element in a given index.
      * If index is lower than 0, it inserts in the first potision of the list.
-     * If it is equal or higher than length, it inserts in the last position.
+     * If it equals or is higher than length, it inserts in the last position.
+     * 
+     * @return Returns the list.
      */
     insertAt(element: T, index: number): List<T> {
         if (index < 1) {
@@ -130,7 +144,7 @@ export class List<T> {
         } else if (index >= this.length) {
             this.pushBack(element);
         } else {
-            this._array.splice(index, 0, element);
+            this._array.splice(this.fixIndex(index), 0, element);
         }
         return this;
     }
@@ -138,16 +152,20 @@ export class List<T> {
     /**
      * Gets the iterator starting at a given index.
      * If index is lower than 0, it is on the first element.
-     * If it is equal or higher than length, it is on the last element.
+     * If it equals or is higher than length, it is on the last element.
      */
     iteratorAt(index: number): Iterator<T> {
-        if (index < 0) {
-            return new Iterator<T>(this, 0);
-        }
-        if (index >= this.length) {
-            return new Iterator<T>(this, this.length - 1);
-        }
-        return new Iterator<T>(this, index);
+        return new Iterator<T>(this, this.fixIndex(index));
+    }
+
+    /**
+     * Removes the element at a given index.
+     * If index is lower than 0, it removes the first element.
+     * If it equals or is higher than length, it removes the last element.
+     */
+    removeAt(index: number): List<T> {
+        this._array.splice(this.fixIndex(index), 1);
+        return this;
     }
 
     /**
@@ -172,14 +190,14 @@ export class List<T> {
      * Gets the first element of the list.
      */
     get first(): T {
-        return _.head(this._array);
+        return head(this._array);
     }
 
     /**
      * Gets the last element of the list.
      */
     get last(): T {
-        return _.last(this._array);
+        return last(this._array);
     }
 
     /**
@@ -187,6 +205,18 @@ export class List<T> {
      */
     get iterator(): Iterator<T> {
         return this.iteratorAt(0);
+    }
+
+    /**
+     * If index is less than 0, returns the first position.
+     * If it equals or is higher then length, returns the last position.
+     */
+    private fixIndex(index: number): number {
+        return index < 0 ?
+            0 :
+            index > this.length - 1 ?
+                this.length - 1 :
+                index;
     }
 
 
