@@ -1,6 +1,6 @@
 {
   "name": "typedata",
-  "version": "0.0.8-5",
+  "version": "0.0.8-6",
   "description": "A bundle of data collections in TypeScript",
   "main": "lib/index.js",
   "scripts": {
