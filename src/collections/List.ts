@@ -184,14 +184,16 @@ export class List<T> {
     /**
      * Insert a sorted element using a compare function to determine the right position.
      * 
-     * @return Returns the list.
+     * @return Returns the index in which the element was added.
      */
-    insertSorted(element: T, callback: (a: T, b: T) => number): List<T> {
+    insertSorted(element: T, callback: (a: T, b: T) => number): number {
         let index = this.findIndex(e => callback(e, element) > -1);
         if (index === -1) {
-            return this.pushBack(element);
+            this.pushBack(element);
+            return this.length - 1;
         } else {
-            return this.insertAt(element, index);
+            this.insertAt(element, index);
+            return index;
         }
     }
 
