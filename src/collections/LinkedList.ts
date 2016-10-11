@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-export class Iterable<T> {
+export class Iterator<T> {
 
     private index: number;
     private list: List<T>;
@@ -10,36 +10,69 @@ export class Iterable<T> {
         this.index = index;
     }
 
-    forward(): Iterable<T> {
+    /**
+     * Moves the iterator to the next element.
+     * If this is already the next element, then it does nothing.
+     * To avoid an infinity loop, use it combined with hasNext property.
+     * 
+     * @return Returns the iterator itself.
+     */
+    forward(): Iterator<T> {
         if (this.list.length > this.index + 1) {
             this.index++;
         }
         return this;
     }
 
-    backward(): Iterable<T> {
+    /**
+     * Moves the iterator to the previous element.
+     * If this is already the first element, then it does nothing.
+     * To avoid an infinity loop, use it combined with hasPrevious property.
+     * 
+     * @return Returns the iterator itself.
+     */
+    backward(): Iterator<T> {
         if (this.list.length > 0) {
             this.index--;
         }
         return this;
     }
 
+    /**
+     * Determines if the iterator has a previous element.
+     * Use it combined to backward() method.
+     */
     get hasPrevious(): boolean {
         return this.previous !== undefined;
     }
 
+    /**
+     * Determines if the iterator has a next element.
+     * Use it combined to forward() method.
+     */
     get hasNext(): boolean {
         return this.next !== undefined;
     }
 
+    /**
+     * Gets the actual element.
+     */
     get value(): T {
         return this.list.get(this.index);
     }
 
+    /**
+     * Gets the previous element.
+     * If there is not a previous element, it returns undefined.
+     */
     get previous(): T {
         return this.list.get(this.index - 1);
     }
 
+    /**
+     * Gets the next element.
+     * If there is not a next element, it returns undefined.
+     */
     get next(): T {
         return this.list.get(this.index + 1);
     }
@@ -121,8 +154,8 @@ export class List<T> {
     /**
      * Gets a new iterator for the list starting in first element.
      */
-    get iterator(): Iterable<T> {
-        return new Iterable<T>(this, 0);
+    get iterator(): Iterator<T> {
+        return new Iterator<T>(this, 0);
     }
 
 

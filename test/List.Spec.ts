@@ -1,6 +1,6 @@
 import { } from 'mocha';
 import { expect } from 'chai';
-import { List, Iterable } from '../index';
+import { List, Iterator } from '../index';
 
 describe('List', () => {
 
