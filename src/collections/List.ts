@@ -127,6 +127,19 @@ export class List<T> {
     }
 
     /**
+     * Gets the element as in a circular list. Index can be negative or higher than length.
+     * For example, if index -1 is passed, then it returns the last element.
+     */
+    getCircular(index: number): T {
+        if (index > 0) {
+            index = index % this.length;
+        } else {
+            index = (index % this.length + this.length) % this.length;
+        }
+        return this._array[index];
+    }
+
+    /**
      * Inserts an element in the first position of the list.
      * 
      * @param Element to be inserted.

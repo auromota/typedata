@@ -200,4 +200,24 @@ describe('List', () => {
         expect(list.elements).deep.eq([1, 3, 4]);
     });
 
+    it('should access elements as in a circular list', () => {
+        let list = new List<number>(1, 2, 3, 4);
+        expect(list.getCircular(-8)).eq(1);
+        expect(list.getCircular(-7)).eq(2);
+        expect(list.getCircular(-6)).eq(3);
+        expect(list.getCircular(-5)).eq(4);
+        expect(list.getCircular(-4)).eq(1);
+        expect(list.getCircular(-3)).eq(2);
+        expect(list.getCircular(-2)).eq(3);
+        expect(list.getCircular(-1)).eq(4);
+        expect(list.getCircular(0)).eq(1);
+        expect(list.getCircular(1)).eq(2);
+        expect(list.getCircular(2)).eq(3);
+        expect(list.getCircular(3)).eq(4);
+        expect(list.getCircular(4)).eq(1);
+        expect(list.getCircular(5)).eq(2);
+        expect(list.getCircular(6)).eq(3);
+        expect(list.getCircular(7)).eq(4);
+    });
+
 });
