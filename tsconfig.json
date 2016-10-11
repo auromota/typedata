@@ -4,7 +4,7 @@
 		"module": "commonjs",
 		"target": "es5",
 		"noImplicitAny": true,
-		"outDir": "dist",
+		"outDir": "lib/",
 		"strictNullChecks": true,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true
