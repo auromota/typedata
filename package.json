@@ -1,6 +1,6 @@
 {
   "name": "typedata",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A bundle of data collections in TypeScript",
   "main": "dist/TypeData.js",
   "scripts": {
