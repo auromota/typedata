@@ -2,12 +2,12 @@ import { tail, head, last, findIndex } from 'lodash';
 
 export class Iterator<T> {
 
-    private index: number;
+    private _index: number;
     private list: List<T>;
 
     constructor(list: List<T>, index: number) {
         this.list = list;
-        this.index = index;
+        this._index = index;
     }
 
     /**
@@ -19,7 +19,7 @@ export class Iterator<T> {
      */
     forward(): Iterator<T> {
         if (this.list.length > this.index + 1) {
-            this.index++;
+            this._index++;
         }
         return this;
     }
@@ -33,7 +33,7 @@ export class Iterator<T> {
      */
     backward(): Iterator<T> {
         if (this.list.length > 0) {
-            this.index--;
+            this._index--;
         }
         return this;
     }
@@ -58,7 +58,7 @@ export class Iterator<T> {
      * Gets the actual element.
      */
     get value(): T {
-        return this.list.get(this.index);
+        return this.list.get(this._index);
     }
 
     /**
@@ -66,7 +66,7 @@ export class Iterator<T> {
      * If there is not a previous element, it returns undefined.
      */
     get previous(): T {
-        return this.list.get(this.index - 1);
+        return this.list.get(this._index - 1);
     }
 
     /**
@@ -74,7 +74,14 @@ export class Iterator<T> {
      * If there is not a next element, it returns undefined.
      */
     get next(): T {
-        return this.list.get(this.index + 1);
+        return this.list.get(this._index + 1);
+    }
+
+    /**
+     * Gets the index in which iterator is.
+     */
+    get index(): number {
+        return this._index;
     }
 
 }
@@ -207,12 +214,16 @@ export class List<T> {
     }
 
     /**
-     * Removes the element at a given index.
+     * Removes the element at a given index or iterator.
      * If index is lower than 0, it removes the first element.
      * If it equals or is higher than length, it removes the last element.
      */
-    removeAt(index: number): List<T> {
-        this._array.splice(this.fixIndex(index), 1);
+    removeAt(value: number | Iterator<T>): List<T> {
+        if (typeof (value) === 'number') {
+            this._array.splice(this.fixIndex(value), 1);
+        } else {
+            this._array.splice(value.index, 1);
+        }
         return this;
     }
 

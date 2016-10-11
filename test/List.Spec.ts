@@ -188,6 +188,16 @@ describe('List', () => {
         list.insertSorted(1, compareFn);
         list.insertSorted(3, compareFn);
         expect(list.elements).deep.eq([-1, 0, 1, 1, 2, 3]);
-    })
+    });
+
+    it('should remove element by iterator', () => {
+        let list = new List<number>(1, 2, 3, 4);
+        let it = list.iterator;
+        expect(it.index).deep.eq(0);
+        it.forward();
+        expect(it.index).deep.eq(1);
+        list.removeAt(it);
+        expect(list.elements).deep.eq([1, 3, 4]);
+    });
 
 });
