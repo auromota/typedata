@@ -141,11 +141,21 @@ export class List<T> {
         return this;
     }
 
+    /**
+     * Removes the first element of the list.
+     * 
+     * @return Returns the list.
+     */
     popFront(): List<T> {
         this._array = tail(this._array);
         return this;
     }
 
+    /**
+     * Removes the last element of the list.
+     * 
+     * @return Returns the list.
+     */
     popBack(): List<T> {
         if (this._array.length > 0) {
             this._array.length--;
@@ -172,6 +182,20 @@ export class List<T> {
     }
 
     /**
+     * Insert a sorted element using a compare function to determine the right position.
+     * 
+     * @return Returns the list.
+     */
+    insertSorted(element: T, callback: (a: T, b: T) => number): List<T> {
+        let index = this.findIndex(e => callback(e, element) > -1);
+        if (index === -1) {
+            return this.pushBack(element);
+        } else {
+            return this.insertAt(element, index);
+        }
+    }
+
+    /**
      * Gets the iterator starting at a given index.
      * If index is lower than 0, it is on the first element.
      * If it equals or is higher than length, it is on the last element.
@@ -188,6 +212,13 @@ export class List<T> {
     removeAt(index: number): List<T> {
         this._array.splice(this.fixIndex(index), 1);
         return this;
+    }
+
+    /**
+     * Sort the list given a compare function.
+     */
+    sort(callback: (a: T, b: T) => number): void {
+        this._array.sort(callback);
     }
 
     /**

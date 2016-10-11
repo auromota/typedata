@@ -172,4 +172,22 @@ describe('List', () => {
         expect(invalidIndex).eq(-1);
     });
 
+    it('should sort the array', () => {
+        let list = new List<string>('Jon', 'Mary', 'Kane');
+        list.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+        expect(list.elements).deep.eq(['Jon', 'Kane', 'Mary']);
+    });
+
+    it('should insert elements sorted', () => {
+        let list = new List<number>();
+        var compareFn = (a: number, b: number) => a < b ? -1 : a == b ? 0 : 1;
+        list.insertSorted(1, compareFn);
+        list.insertSorted(2, compareFn);
+        list.insertSorted(-1, compareFn);
+        list.insertSorted(0, compareFn);
+        list.insertSorted(1, compareFn);
+        list.insertSorted(3, compareFn);
+        expect(list.elements).deep.eq([-1, 0, 1, 1, 2, 3]);
+    })
+
 });
