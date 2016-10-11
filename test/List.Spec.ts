@@ -100,4 +100,23 @@ describe('List', () => {
         }
     });
 
+    it('should insert elements at an index', () => {
+        let list = new List<number>();
+        list.insertAt(1, 0);
+        list.insertAt(2, 0);
+        list.insertAt(3, 2);
+        list.insertAt(4, 1);
+        expect(list.elements).deep.eq([2, 4, 1, 3]);
+    });
+
+    it('should return the iterator at the given position', () => {
+        let list = new List<number>(1, 2, 3, 4, 5, 6);
+        let it = list.iteratorAt(-1);
+        expect(it.value).eq(1);
+        it = list.iteratorAt(9);
+        expect(it.value).eq(6);
+        it = list.iteratorAt(3);
+        expect(it.value).eq(4);
+    });
+
 });

@@ -120,6 +120,37 @@ export class List<T> {
     }
 
     /**
+     * Inserts an element in a given index.
+     * If index is lower than 0, it inserts in the first potision of the list.
+     * If it is equal or higher than length, it inserts in the last position.
+     */
+    insertAt(element: T, index: number): List<T> {
+        if (index < 1) {
+            this.pushFront(element);
+        } else if (index >= this.length) {
+            this.pushBack(element);
+        } else {
+            this._array.splice(index, 0, element);
+        }
+        return this;
+    }
+
+    /**
+     * Gets the iterator starting at a given index.
+     * If index is lower than 0, it is on the first element.
+     * If it is equal or higher than length, it is on the last element.
+     */
+    iteratorAt(index: number): Iterator<T> {
+        if (index < 0) {
+            return new Iterator<T>(this, 0);
+        }
+        if (index >= this.length) {
+            return new Iterator<T>(this, this.length - 1);
+        }
+        return new Iterator<T>(this, index);
+    }
+
+    /**
      * Gets all the elements of the list.
      */
     get elements(): T[] {
@@ -155,7 +186,7 @@ export class List<T> {
      * Gets a new iterator for the list starting in first element.
      */
     get iterator(): Iterator<T> {
-        return new Iterator<T>(this, 0);
+        return this.iteratorAt(0);
     }
 
 
