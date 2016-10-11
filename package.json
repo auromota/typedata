@@ -2,7 +2,7 @@
   "name": "typedata",
   "version": "0.0.8-5",
   "description": "A bundle of data collections in TypeScript",
-  "main": "./dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prepublish": "tsc && dts-generator --name typedata --project . --out lib/index.d.ts",
     "test": "mocha --compilers ts:ts-node/register --opts mocha.opts",
