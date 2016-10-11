@@ -6,8 +6,13 @@ It is still under development.
 - List
 
 ## How to use it
+Add it to your dependencies:
 ```bash
-npm install typedata
+npm install --save typedata
+```
+Then import what you need:
+```typescript
+import { List } from 'typedata';
 ```
 
 ## Development
