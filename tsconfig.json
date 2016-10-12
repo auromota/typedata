@@ -10,6 +10,8 @@
 		"noFallthroughCasesInSwitch": true
 	},
 	"files": [
-		"src/index.ts"
+		"src/index.ts",
+		"src/collections/Iterator.ts",
+		"src/collections/List.ts"
 	]
 }
