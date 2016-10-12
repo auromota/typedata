@@ -1,7 +1,7 @@
-import { Iterator } from './Iterator';
+import Iterator from './Iterator';
 import { tail, head, last, findIndex } from 'lodash';
 
-export class List<T> {
+export default class List<T> {
 
     private _array: T[];
 

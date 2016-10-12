@@ -1,2 +1,2 @@
-export { Iterator } from './collections/Iterator';
-export { List } from './collections/List';
+export { default as Iterator } from './collections/Iterator';
+export { default as List } from './collections/List';

@@ -1,6 +1,6 @@
-import { List } from './List';
+import List from './List';
 
-export class Iterator<T> {
+export default class Iterator<T> {
 
     private _index: number;
     private list: List<T>;

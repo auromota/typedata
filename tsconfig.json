@@ -7,15 +7,9 @@
 		"outDir": "dist",
 		"strictNullChecks": true,
 		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-		"typeRoots": [
-			"node_modules/@types"
-		],
-		"types": [
-			"@types/lodash"
-		]
+		"noFallthroughCasesInSwitch": true
 	},
 	"files": [
-		"src/main.ts"
+		"src/index.ts"
 	]
 }
