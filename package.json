@@ -3,7 +3,7 @@
   "version": "0.0.8-10",
   "description": "A bundle of data collections in TypeScript",
   "main": "dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "postinstall": "tsc",
     "test": "mocha --compilers tsx:ts-node/register --opts mocha.opts",
