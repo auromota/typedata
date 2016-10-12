@@ -2,11 +2,14 @@
   "name": "typedata",
   "version": "0.0.8-6",
   "description": "A bundle of data collections in TypeScript",
-  "main": "lib/index.js",
+  "main": "dist/main.js",
+  "typings": "dist/main.d.ts",
   "scripts": {
-    "prepublish": "tsc && dts-generator --name typedata --project . --out lib/index.d.ts",
-    "test": "mocha --compilers ts:ts-node/register --opts mocha.opts",
-    "test:auto": "mocha --compilers ts:ts-node/register --opts mocha.opts --watch"
+    "preinstall": "npm install autodts",
+    "postinstall": "autodts link",
+    "prepublish": "tsc && autodts generate",
+    "test": "mocha --compilers tsx:ts-node/register --opts mocha.opts",
+    "test:auto": "mocha --compilers tsx:ts-node/register --opts mocha.opts --watch"
   },
   "repository": {
     "type": "git",
@@ -15,12 +18,8 @@
   "author": "Auro Mota",
   "license": "MIT",
   "typescript": {
-    "definition": "lib/index"
+    "definition": "index.d.ts"
   },
-  "typings": "lib/index",
-  "files": [
-    "lib/"
-  ],
   "bugs": {
     "url": "https://github.com/auromota/typedata/issues"
   },
@@ -28,7 +27,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.36",
     "@types/mocha": "^2.2.32",
-    "dts-generator": "^1.7.0",
+    "autodts": "0.0.6",
     "lodash": "^4.0.0"
   },
   "keywords": [
@@ -42,6 +41,7 @@
     "collections"
   ],
   "devDependencies": {
+    "@lib/autodts-generator": "0.0.2",
     "@types/chai": "^3.4.34",
     "chai": "^3.5.0",
     "mocha": "^3.1.0",
