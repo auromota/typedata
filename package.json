@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
-    "prepublish": "tsc",
+    "postinstall": "tsc",
     "test": "mocha --compilers tsx:ts-node/register --opts mocha.opts",
     "test:auto": "mocha --compilers tsx:ts-node/register --opts mocha.opts --watch"
   },
