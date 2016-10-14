@@ -169,6 +169,13 @@ export default class List<T> {
     }
 
     /**
+     * Executes a callback in all elements and removes elements in which if callback returns true.
+     */
+    removeIf(callback: (element: T) => boolean): void {
+        this._array = this._array.filter(element => !callback(element));
+    }
+
+    /**
      * Sort the list given a compare function.
      */
     sort(callback: (a: T, b: T) => number): void {

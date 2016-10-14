@@ -220,14 +220,14 @@ describe('List', () => {
         expect(list.getCircular(7)).eq(4);
 
         let list2 = new List<number>(1);
-        expect(list.getCircular(0)).eq(1);
-        expect(list.getCircular(-1)).eq(1);
-        expect(list.getCircular(1)).eq(1);
+        expect(list2.getCircular(0)).eq(1);
+        expect(list2.getCircular(-1)).eq(1);
+        expect(list2.getCircular(1)).eq(1);
 
         let list3 = new List<number>();
-        expect(list.getCircular(0)).eq(undefined);
-        expect(list.getCircular(-1)).eq(undefined);
-        expect(list.getCircular(1)).eq(undefined);
+        expect(list3.getCircular(0)).eq(undefined);
+        expect(list3.getCircular(-1)).eq(undefined);
+        expect(list3.getCircular(1)).eq(undefined);
     });
 
     it('should set new values in the list', () => {
@@ -235,6 +235,12 @@ describe('List', () => {
         list.set(10, 1);
         expect(list.elements).deep.eq([1, 10, 3, 4]);
         expect(list.set(1, 10)).eq(false);
+    });
+
+    it('should remove if', () => {
+        let list = new List<number>(1, 2, 3, 4, 5, 6);
+        list.removeIf(element => element % 2 === 0);
+        expect(list.elements).deep.eq([1, 3, 5]);
     });
 
 });
