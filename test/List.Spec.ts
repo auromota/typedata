@@ -218,6 +218,16 @@ describe('List', () => {
         expect(list.getCircular(5)).eq(2);
         expect(list.getCircular(6)).eq(3);
         expect(list.getCircular(7)).eq(4);
+
+        let list2 = new List<number>(1);
+        expect(list.getCircular(0)).eq(1);
+        expect(list.getCircular(-1)).eq(1);
+        expect(list.getCircular(1)).eq(1);
+
+        let list3 = new List<number>();
+        expect(list.getCircular(0)).eq(undefined);
+        expect(list.getCircular(-1)).eq(undefined);
+        expect(list.getCircular(1)).eq(undefined);
     });
 
     it('should set new values in the list', () => {
