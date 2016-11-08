@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "postinstall": "tsc",
+    "prepublish": "tsc",
     "test": "mocha --compilers tsx:ts-node/register --opts mocha.opts",
     "test:auto": "mocha --compilers tsx:ts-node/register --opts mocha.opts --watch"
   },
@@ -21,8 +21,7 @@
   "homepage": "https://github.com/auromota/typedata#readme",
   "dependencies": {
     "@types/lodash": "^4.14.36",
-    "lodash": "^4.0.0",
-    "typescript": "^2.0.3"
+    "lodash": "^4.0.0"
   },
   "keywords": [
     "data",
@@ -39,6 +38,7 @@
     "@types/chai": "^3.4.34",
     "chai": "^3.5.0",
     "mocha": "^3.1.0",
-    "ts-node": "^1.3.0"
+    "ts-node": "^1.3.0",
+    "typescript": "^2.0.3"
   }
 }
