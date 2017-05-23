@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"declaration": true,
+		"module": "es2015",
+		"target": "es5",
+		"noImplicitAny": true,
+		"outDir": "esm",
+		"strictNullChecks": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true
+	},
+	"files": [
+		"src/index.ts",
+		"src/collections/Iterator.ts",
+		"src/collections/List.ts"
+	]
+}
