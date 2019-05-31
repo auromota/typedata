@@ -171,8 +171,11 @@ export default class List<T> {
     /**
      * Executes a callback in all elements and removes elements in which if callback returns true.
      */
-    removeIf(callback: (element: T) => boolean): void {
-        this._array = this._array.filter(element => !callback(element));
+    removeIf(callback: (element: T) => boolean): T[] {
+        const filteredArray = this._array.filter(element => !callback(element));
+        const diff = this._array.filter(el => filteredArray.indexOf(el) < 0).concat(filteredArray.filter(el => this._array.indexOf(el) < 0));
+        this._array = filteredArray;
+        return diff;
     }
 
     /**
@@ -203,14 +206,14 @@ export default class List<T> {
     /**
      * Gets the first element of the list.
      */
-    get first(): T {
+    get first(): T | undefined {
         return head(this._array);
     }
 
     /**
      * Gets the last element of the list.
      */
-    get last(): T {
+    get last(): T | undefined {
         return last(this._array);
     }
 

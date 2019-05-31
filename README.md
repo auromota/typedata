@@ -36,4 +36,4 @@ Auro Mota
 
 ## License
 MIT License
-Copyright (c) 2016 Auro Mota
+Copyright (c) 2019 Auro Mota
