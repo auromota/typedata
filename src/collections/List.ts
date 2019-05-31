@@ -171,11 +171,11 @@ export default class List<T> {
     /**
      * Executes a callback in all elements and removes elements in which if callback returns true.
      */
-    removeIf(callback: (element: T) => boolean): T[] {
+    removeIf(callback: (element: T) => boolean): List<T> {
         const filteredArray = this._array.filter(element => !callback(element));
         const diff = this._array.filter(el => filteredArray.indexOf(el) < 0).concat(filteredArray.filter(el => this._array.indexOf(el) < 0));
         this._array = filteredArray;
-        return diff;
+        return new List<T>(...diff);
     }
 
     /**
